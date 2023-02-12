@@ -1,29 +1,30 @@
 import {
   Avatar,
   Box,
-  Button,
   Divider,
   IconButton,
   Stack,
-  Switch,
+  // Switch,
   useTheme,
 } from "@mui/material";
 import React from "react";
 import { sidBar } from "../../data";
 import logo from "../../assets/Image/logo.png";
 import avatar from "../../assets/Image/avatar.png";
-import { Link, useParams, useLocation } from "react-router-dom";
+import SideBarIconButton from "./SideBarIconButton";
+import useSettings from "../../hooks/useSettings";
+import { ChatCircleDots, IconContext } from "phosphor-react";
+import ThemeSwitch from "./ThemeSwitch";
 
 const SideBar = () => {
   const theme = useTheme();
 
-  const { pathname } = useLocation();
-  const path = pathname.slice(1);
+  const { onToggleMode } = useSettings();
 
   return (
     <Box
       sx={{
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.background.sidebar,
         boxShadow: "0px 0px 4px rgba(0, 0, 0, 0.25)",
         height: "100vh",
         width: "14vh",
@@ -48,28 +49,26 @@ const SideBar = () => {
           </IconButton>
           {sidBar.map((el) => {
             return el.divider ? (
-              <React.Fragment key={el.id}>{el.divider}</React.Fragment>
-            ) : (
-              <Link to={el.url} key={el.id}>
-                <IconButton
-                  disableRipple
+              <React.Fragment key={el.id}>
+                <Divider
                   sx={{
-                    width: "max-content",
-                    borderRadius: 1.5,
-                    color: `${path === el.url && "#fff"}`,
-                    backgroundColor: `${
-                      path === el.url && theme.palette.primary.main
-                    }`,
-                  }}>
-                  {el.icon}
-                </IconButton>
-              </Link>
+                    width: 70,
+                    backgroundColor: theme.palette.primary.grey,
+                  }}
+                />
+              </React.Fragment>
+            ) : (
+              <SideBarIconButton url={el.url} icon={el.icon} key={el.id} />
             );
           })}
         </Stack>
 
         <Stack spacing={4} alignItems="center" pb={3}>
-          <Switch size="medium" />
+          <ThemeSwitch
+            checked={theme.palette.mode === "dark"}
+            size="medium"
+            onChange={onToggleMode}
+          />
           <Avatar src={avatar} sx={{ width: 56, height: 56 }} />
         </Stack>
       </Stack>

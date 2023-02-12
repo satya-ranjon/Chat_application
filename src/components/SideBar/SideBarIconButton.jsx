@@ -14,13 +14,12 @@ const SideBarIconButton = ({ url, icon }) => {
         sx={{
           width: "max-content",
           borderRadius: 1.5,
-          color: theme.palette.text.primary,
           color: `${
             path === url ? theme.palette.text.light : theme.palette.text.primary
           }`,
           backgroundColor: `${path === url && theme.palette.primary.main}`,
           "&:hover": {
-            backgroundColor: `${path !== url && "#5b96f721"}`,
+            backgroundColor: `${path !== url && theme.palette.hover.btn}`,
           },
           transition: ".5s",
         }}>
