@@ -13,7 +13,6 @@ import logo from "../../assets/Image/logo.png";
 import avatar from "../../assets/Image/avatar.png";
 import SideBarIconButton from "./SideBarIconButton";
 import useSettings from "../../hooks/useSettings";
-import { ChatCircleDots, IconContext } from "phosphor-react";
 import ThemeSwitch from "./ThemeSwitch";
 
 const SideBar = () => {
@@ -66,7 +65,6 @@ const SideBar = () => {
         <Stack spacing={4} alignItems="center" pb={3}>
           <ThemeSwitch
             checked={theme.palette.mode === "dark"}
-            size="medium"
             onChange={onToggleMode}
           />
           <Avatar src={avatar} sx={{ width: 56, height: 56 }} />

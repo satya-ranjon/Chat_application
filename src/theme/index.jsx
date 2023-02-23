@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import palette from "./palette";
+import typography from "./typography";
 import useSettings from "../hooks/useSettings";
 
 const AppThemeProvider = ({ children }) => {
@@ -11,6 +12,7 @@ const AppThemeProvider = ({ children }) => {
   const themeOption = useMemo(
     () => ({
       palette: themeMode === "light" ? palette.light : palette.dark,
+      typography,
     }),
     [themeMode]
   );

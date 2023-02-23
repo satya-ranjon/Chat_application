@@ -15,6 +15,7 @@ const palette = {
     background: {
       default: "#fff",
       sidebar: "#f0f4fa",
+      chatlist: "#F8FAFF",
     },
   },
   dark: {
@@ -34,6 +35,7 @@ const palette = {
       //   default: "#263238",
       default: "#141b1f",
       sidebar: "#121212",
+      chatlist: "#1e2126",
     },
   },
 };
